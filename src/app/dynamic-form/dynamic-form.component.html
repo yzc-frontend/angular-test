@@ -1,0 +1,20 @@
+<div class="list">
+  <div class="list-content" *ngFor="let key of objectKeys(keyObject)">
+    {{ key }}:
+    <div class="list-value">
+      <div *ngIf="keyObject[key] && !isSelect(keyObject[key])">
+        <input type="text" [(ngModel)]="keyObject[key]" />
+      </div>
+      <div *ngIf="isSelect(keyObject[key])">
+        <select [(ngModel)]="keyObject[key].selectedValue" >
+          <option *ngFor="let option of keyObject[key].valueList" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="button">
+  <button (click)="submit()">Submit</button>
+</div>
